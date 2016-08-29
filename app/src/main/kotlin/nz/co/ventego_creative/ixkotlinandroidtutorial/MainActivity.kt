@@ -8,6 +8,7 @@ import butterknife.BindView
 import butterknife.ButterKnife
 
 import nz.co.ventego_creative.ixkotlinandroidtutorial.adapters.AnimalListAdapater
+import nz.co.ventego_creative.ixkotlinandroidtutorial.model.api.PetfinderRequest
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +28,10 @@ class MainActivity : AppCompatActivity() {
 
         animalList.layoutManager = LinearLayoutManager(this)
         animalList.adapter = AnimalListAdapater(animalItems)
+
+        val result = PetfinderRequest("90210", "cat", this).send()
+
+
     }
 
 
