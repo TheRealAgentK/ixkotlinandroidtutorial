@@ -1,22 +1,23 @@
 package nz.co.ventego_creative.ixkotlinandroidtutorial
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import butterknife.BindView
 import butterknife.ButterKnife
-import butterknife.OnClick
+
+import nz.co.ventego_creative.ixkotlinandroidtutorial.adapters.AnimalListAdapater
 
 class MainActivity : AppCompatActivity() {
 
-    @BindView(R.id.helloWorld)
-    lateinit var helloWorld: TextView
+    @BindView(R.id.animal_list)
+    lateinit var animalList: RecyclerView
 
-    @OnClick(R.id.clickMe)
-    fun clickedClickMe() {
-        Log.d("MainActivity", "onClick: clickMe")
-    }
+    private val animalItems = listOf(
+        "Molly - 12 yrs - Persian",
+        "Max - 7 yrs - German Shepherd",
+        "Tantala - 2 months - Chicken")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +25,8 @@ class MainActivity : AppCompatActivity() {
 
         ButterKnife.bind(this)
 
-        helloWorld.text = "Hello from iX"
-
+        animalList.layoutManager = LinearLayoutManager(this)
+        animalList.adapter = AnimalListAdapater(animalItems)
     }
 
 
