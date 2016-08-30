@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.TextView
 
-class AnimalListAdapater constructor(val items: List<String>) : RecyclerView.Adapter<AnimalListAdapater.ViewHolder>() {
+class AnimalListAdapter constructor(val items: List<String>) : RecyclerView.Adapter<AnimalListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(TextView(parent.context))
