@@ -30,8 +30,6 @@ class MainActivity : AppCompatActivity() {
         animalList.adapter = AnimalListAdapter(animalItems)
 
         val result = PetfinderRequest("90210", "cat", this).send()
-
-
     }
 
 
