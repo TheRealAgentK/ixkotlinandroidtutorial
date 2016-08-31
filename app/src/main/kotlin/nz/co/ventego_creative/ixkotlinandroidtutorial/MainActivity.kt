@@ -9,8 +9,10 @@ import butterknife.ButterKnife
 
 import nz.co.ventego_creative.ixkotlinandroidtutorial.adapters.AnimalListAdapter
 import nz.co.ventego_creative.ixkotlinandroidtutorial.commands.PetFindCommand
+import nz.co.ventego_creative.ixkotlinandroidtutorial.model.domain.Pet
 
 import org.jetbrains.anko.async
+import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +31,13 @@ class MainActivity : AppCompatActivity() {
         async() {
             val result = PetFindCommand("90210","cat").execute()
             uiThread {
-                animalList.adapter = AnimalListAdapter(result)
+                animalList.adapter = AnimalListAdapter(result,
+                    object: AnimalListAdapter.ItemClickListener{
+                        override fun invoke(pet:Pet) {
+                            toast(pet.name)
+                        }
+                    }
+                )
             }
         }
     }
